@@ -1,0 +1,37 @@
+[
+  {
+    "id": "T001",
+    "customer": "Susana Lopez",
+    "message": "I was charged twice for my subscription this month. Please refund.",
+    "category": null,
+    "priority": null
+  },
+  {
+    "id": "T002",
+    "customer": "Yi Chen",
+    "message": "The app keeps crashing every time I try to upload a file. Help.",
+    "category": null,
+    "priority": null
+  },
+  {
+    "id": "T003",
+    "customer": "Sang Patel",
+    "message": "Can you add dark mode to the dashboard? Would really improve my experience.",
+    "category": null,
+    "priority": null
+  },
+  {
+    "id": "T004",
+    "customer": "William Roosevelt",
+    "message": "How do I export my data to CSV? I can't find the option anywhere.",
+    "category": null,
+    "priority": null
+  },
+  {
+    "id": "T005",
+    "customer": "Sofia Perales",
+    "message": "My account has been locked for 2 days and I can't log in. I'm losing my clients!",
+    "category": null,
+    "priority": null
+  }
+]
