@@ -1,0 +1,98 @@
+[
+  {
+    "id": "faq-001",
+    "category": "billing",
+    "question": "How do I update my payment method?",
+    "answer": "You can update your payment method by going to Account Settings > Billing > Payment Methods. Changes take effect immediately and will apply to your next billing cycle. We accept Visa, Mastercard, American Express, and ACH bank transfers."
+  },
+  {
+    "id": "faq-002",
+    "category": "billing",
+    "question": "Why was I charged twice this month?",
+    "answer": "Double charges are typically caused by a failed payment retry. If your original payment fails, our system retries after 3 days. If the original also processes late, you may see two charges. Please contact billing support and we will issue a refund for the duplicate within 3-5 business days."
+  },
+  {
+    "id": "faq-003",
+    "category": "billing",
+    "question": "Can I get a refund?",
+    "answer": "We offer full refunds within 14 days of purchase for annual plans. Monthly plans are non-refundable but can be cancelled at any time to stop future charges. Enterprise customers should contact their account manager for custom refund arrangements."
+  },
+  {
+    "id": "faq-004",
+    "category": "billing",
+    "question": "How do I upgrade or downgrade my plan?",
+    "answer": "Plan changes can be made at any time from Account Settings > Billing > Change Plan. Upgrades take effect immediately and are prorated. Downgrades take effect at the end of your current billing cycle. You will not lose any data when changing plans."
+  },
+  {
+    "id": "faq-005",
+    "category": "bug",
+    "question": "The app is not loading / showing a blank screen.",
+    "answer": "First, try clearing your browser cache and cookies, then hard refresh (Ctrl+Shift+R or Cmd+Shift+R). If the issue persists, try an incognito window or a different browser. If none of these work, check our status page at status.agentcrm.io for any ongoing incidents."
+  },
+  {
+    "id": "faq-006",
+    "category": "bug",
+    "question": "My data is not syncing between devices.",
+    "answer": "Sync issues are usually resolved by logging out and logging back in. If the problem persists, go to Settings > Sync and click Force Sync. If your data still does not appear, please provide your account email and the devices affected so our engineering team can investigate."
+  },
+  {
+    "id": "faq-007",
+    "category": "bug",
+    "question": "I am getting an error when trying to export data.",
+    "answer": "Export errors most commonly occur when the dataset exceeds 50,000 rows. Try filtering your data to a smaller date range before exporting. If you need a full export, contact support and we can generate it server-side and send it to your email within 24 hours."
+  },
+  {
+    "id": "faq-008",
+    "category": "feature_request",
+    "question": "Can you add Slack integration?",
+    "answer": "Slack integration is on our roadmap for Q3. You can upvote this feature at feedback.agentcrm.io to help prioritize it. In the meantime, you can use our Zapier integration to connect AgentCRM with Slack as a workaround."
+  },
+  {
+    "id": "faq-009",
+    "category": "feature_request",
+    "question": "Is there a mobile app?",
+    "answer": "Our iOS app is currently in beta and available to Pro and Enterprise customers. Android is planned for Q4. You can join the beta waitlist at agentcrm.io/mobile-beta. Our web app is fully responsive and works well on mobile browsers in the meantime."
+  },
+  {
+    "id": "faq-010",
+    "category": "feature_request",
+    "question": "Can I create custom fields for customer records?",
+    "answer": "Custom fields are available on Pro and Enterprise plans. Go to Settings > CRM > Custom Fields to add up to 20 custom fields per object type. Supported field types include text, number, date, dropdown, and multi-select."
+  },
+  {
+    "id": "faq-011",
+    "category": "support",
+    "question": "How do I reset my password?",
+    "answer": "Click Forgot Password on the login page and enter your email. You will receive a reset link within 2 minutes. If you do not see it, check your spam folder. The link expires after 1 hour. If you still cannot access your account, contact support with your account email and we will verify your identity manually."
+  },
+  {
+    "id": "faq-012",
+    "category": "support",
+    "question": "How do I invite team members?",
+    "answer": "Go to Settings > Team > Invite Members. Enter the email addresses of teammates you want to invite. They will receive an email invitation valid for 7 days. You can set their role (Admin, Member, Viewer) at the time of invitation or change it later."
+  },
+  {
+    "id": "faq-013",
+    "category": "support",
+    "question": "What are your support hours?",
+    "answer": "Our support team is available Monday through Friday, 9am to 6pm Eastern Time. Enterprise customers have access to 24/7 priority support. You can also find answers in our Help Center at help.agentcrm.io, which is available any time."
+  },
+  {
+    "id": "faq-014",
+    "category": "account",
+    "question": "How do I delete my account?",
+    "answer": "Account deletion is permanent and cannot be undone. To delete your account, go to Account Settings > Danger Zone > Delete Account. You must be the account owner to perform this action. We recommend exporting your data first. Deletion takes effect within 24 hours and removes all associated data from our systems."
+  },
+  {
+    "id": "faq-015",
+    "category": "account",
+    "question": "How do I transfer account ownership?",
+    "answer": "Account ownership can be transferred by the current owner from Settings > Team > Transfer Ownership. The new owner must already be a member of the account with Admin role. They will receive a confirmation email and must accept within 48 hours."
+  },
+  {
+    "id": "faq-016",
+    "category": "account",
+    "question": "Can I have multiple accounts with the same email?",
+    "answer": "Each email address can only be associated with one AgentCRM account. If you need to manage multiple organizations, we recommend using the Organizations feature (available on Pro and above), which lets you switch between workspaces under a single login."
+  }
+]
