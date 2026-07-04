@@ -1,6 +1,6 @@
 # AgentCRM
 
-I'm studying Computer Science at Columbia, and I've been fascinated by how
+I studied Computer Science at Columbia, and I've been fascinated by how
 companies like Salesforce use AI to manage customer relationships at scale.
 I built AgentCRM to understand that from the inside, by actually building it,
 and specifically to answer a question that generic chatbot demos gloss over:
@@ -21,25 +21,52 @@ Five agents run in sequence on every ticket:
 1. **Classifier Agent**: categorizes the ticket (billing, bug, feature
    request, support, account) using keyword matching, and assigns a priority
 2. **Sentiment Agent**: reads tone (angry, frustrated, calm, neutral) so the
-   response st   response st   respon k   rrd-based   response st   response st   respon k   rrd-based   response st   respobe   response st   response st   respon k   rrd-based   response st   responto   response st   response st   respon k   rrd-based   response st   respontick   response st   response st   respon k   rrd-based   response st   responssponse from a category template, then
+   response strategy can adjust, also keyword-based
+3. **Retriever Agent**: embeds the ticket text with OpenAI's
+   `text-embedding-3-small`, queries a persisted Chroma vector store, and
+   pulls the top-3 most relevant docs from a knowledge base of FAQs and past
+   resolved tickets (above a 0.30 similarity threshold)
+4. **Responder Agent**: builds a response from a category template, then
    grounds it with the actual retrieved knowledge base snippet when the
    retriever found a relevant match, and tags whether the response was
    grounded or not
 5. **Escalation Agent**: flags tickets that need a human, based on priority
    and urgent-language detection
+
+```
 Ticket
-│
-▼
-Classifier Agent  ──────► category, priority
-│
-▼
-Sentiment Agent   ──────► sentiment, tone
-│
-▼
-Retriever Agent   ──────► OpenAI embedding → Chroma similarity search
-│                       → top-3 docs (FAQ + resolved tickets)
-▼
-Responder Agent   ──────► template response,Responder Agent   ──────► template response,Responder Agent   ──────► template response,Responder Agent   ──────► template response,Responder Agent   ──────► template response,Responder Agent   ──────► template response,Responder Agent   ──────�to what's actually hard: making sure retrieval works, and that thResponder Agent   ──────► template response,Responder AgseResponder Agent   ──────► template response,Responder AAQRespries and past rResponder Agent   ──────► template response,Respondemilarity. Responder Agent   ────�riever emReds it, pulls the closest matches, and the responder
+  |
+  v
+Classifier Agent  ------> category, priority
+  |
+  v
+Sentiment Agent   ------> sentiment, tone
+  |
+  v
+Retriever Agent   ------> OpenAI embedding -> Chroma similarity search
+  |                       -> top-3 docs (FAQ + resolved tickets)
+  v
+Responder Agent   ------> template response, grounded with retrieved
+  |                       snippet if a match was found
+  v
+Escalation Agent  ------> escalated: true/false + reason
+  |
+  v
+Result
+```
+
+Classification, sentiment, and escalation are rule-based, not ML. That's on
+purpose. Keeping that part simple and deterministic let me put the real
+effort into what's actually hard: making sure retrieval works, and that the
+grounding is real instead of just padding on top of a generic response.
+
+---
+
+## RAG layer + eval harness
+
+The knowledge base is a mix of FAQ entries and past resolved tickets, each
+embedded and stored in Chroma with cosine similarity. When a ticket comes
+in, the retriever embeds it, pulls the closest matches, and the responder
 only claims a response is "grounded" if a match actually cleared the
 relevance threshold.
 
@@ -69,10 +96,20 @@ moderate, or needs work.
 |------|-----|
 | Orchestration | Python, sequential agent pipeline |
 | Embeddings | OpenAI `text-embedding-3-small` |
-| Vector store | ChromaDB, pers| Vector store | ChromaDB, pers| Vector store | ChromaDB, pers| Vecit| Vector store | C
-| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| Ru| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| D| DAPI_KEY=your-key-here   # or put it in a .env file
+| Vector store | ChromaDB, persisted locally, cosine similarity |
+| Eval | Custom Precision@K + faithfulness harness |
+| Data | Mock tickets + FAQ/resolved-ticket knowledge base (JSON) |
 
-python main.py             python main.py             python main.py             python main.py   # run the retrieval eval harness
+---
+
+## Run it
+
+```bash
+pip install -r requirements.txt
+export OPENAI_API_KEY=your-key-here   # or put it in a .env file
+
+python main.py              # run the full pipeline on sample tickets
+python -m eval.rag_eval     # run the retrieval eval harness
 ```
 
 ---
@@ -80,4 +117,9 @@ python main.py             python main.py             python main.py            
 ## What I'd build next
 
 - Replace the template responses with actual LLM-generated text grounded in
-  the re  the re  the re  the re  the re  the re  the re  the re  the re  thwap the   the re  the re  the re ess proxy for  the re  the re  the or   RA  the re  the re  the re  the re  the re  the re  the re  the re  the re  be  the re  the re  the re  the re  the re  the re  the re  the val + esca  the re  the re  ttually impro  the ra result
+  the retrieved context, rather than a template plus an appended snippet
+- Swap the lexical-overlap faithfulness proxy for a real LLM-as-judge (or
+  RAGAS) score
+- Move classification and sentiment from keyword rules to an embedding or
+  small-model based approach, and see how much retrieval + escalation
+  quality actually improves as a result
