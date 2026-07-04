@@ -1,0 +1,74 @@
+[
+  {
+    "id": "resolved-001",
+    "category": "billing",
+    "original_ticket": "Customer noticed two separate charges of $49 on the same day and asked for one to be reversed immediately, worried it would overdraft their account.",
+    "resolution": "Confirmed the duplicate was caused by a failed-payment retry that succeeded twice. Reversed the extra charge and issued a refund to the original payment method within 2 business days.",
+    "outcome": "Refund processed, customer confirmed funds returned.",
+    "customer_rating": 5
+  },
+  {
+    "id": "resolved-002",
+    "category": "billing",
+    "original_ticket": "Customer wanted to cancel their annual plan two months in and requested a full refund, saying the product didn't fit their team's workflow.",
+    "resolution": "The 14-day refund window had passed, but approved a prorated refund as a one-time exception given how early in the plan lifecycle the request came.",
+    "outcome": "Prorated refund issued, subscription cancelled same day.",
+    "customer_rating": 4
+  },
+  {
+    "id": "resolved-003",
+    "category": "account",
+    "original_ticket": "Customer's account got locked after too many failed login attempts from a shared office IP, and they couldn't unlock it themselves.",
+    "resolution": "Verified identity over email, manually unlocked the account, and suggested enabling single sign-on to avoid shared-password lockouts going forward.",
+    "outcome": "Account unlocked within the hour.",
+    "customer_rating": 4
+  },
+  {
+    "id": "resolved-004",
+    "category": "support",
+    "original_ticket": "Customer couldn't log in after multiple password reset attempts, said the reset email never arrived.",
+    "resolution": "Found the reset emails were being caught by the customer's corporate spam filter. Manually triggered a reset from the admin panel and walked them through setting a new password over chat.",
+    "outcome": "Customer regained access in the same session.",
+    "customer_rating": 5
+  },
+  {
+    "id": "resolved-005",
+    "category": "bug",
+    "original_ticket": "Customer's integration started throwing 500 errors on every call to the /contacts endpoint after a bulk import of 10,000 records.",
+    "resolution": "Traced it to a timeout caused by a missing index during bulk lookups. Added the index and deployed a fix, then confirmed the endpoint handled the same bulk load without errors.",
+    "outcome": "Endpoint stable, customer's integration resumed normal operation.",
+    "customer_rating": 5
+  },
+  {
+    "id": "resolved-006",
+    "category": "bug",
+    "original_ticket": "Customer reported that CSV exports were silently truncating at 1,000 rows with no error message, even though they had over 4,000 contacts.",
+    "resolution": "Found a hardcoded pagination limit in the export job. Removed the cap and added a warning banner for exports over 10,000 rows.",
+    "outcome": "Full exports confirmed working, fix shipped to all customers.",
+    "customer_rating": 5
+  },
+  {
+    "id": "resolved-007",
+    "category": "feature_request",
+    "original_ticket": "Customer asked whether the platform could send Slack notifications when a high-priority ticket comes in, since their team already lives in Slack.",
+    "resolution": "Native Slack notifications weren't available yet, so set up a temporary webhook workaround to bridge ticket alerts into their Slack channel, and logged the request with product.",
+    "outcome": "Workaround delivered same week, native integration filed as a roadmap item.",
+    "customer_rating": 4
+  },
+  {
+    "id": "resolved-008",
+    "category": "support",
+    "original_ticket": "Customer accidentally bulk-deleted their entire contacts list while testing a new import script and had no local backup.",
+    "resolution": "Restored the account from the previous night's automated backup, recovering all but a few hours of same-day changes. Recommended exporting a backup before running bulk scripts going forward.",
+    "outcome": "Data restored within 1 hour, customer resumed work the same day.",
+    "customer_rating": 5
+  },
+  {
+    "id": "resolved-009",
+    "category": "support",
+    "original_ticket": "Customer needed to immediately revoke access for a team member who had just left the company, and wasn't sure removing a seat would affect that person's assigned tickets.",
+    "resolution": "Walked the customer through removing the seat from Account Settings > Team, reassigning that person's open tickets to a teammate before removal so nothing got orphaned.",
+    "outcome": "Access revoked immediately, no tickets lost.",
+    "customer_rating": 5
+  }
+]
