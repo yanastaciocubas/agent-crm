@@ -1,5 +1,7 @@
 # AgentCRM
 
+<img width="800" height="450" alt="Image" src="https://github.com/user-attachments/assets/5f352f94-51e0-470c-8581-3f5a6b39a6a6" />
+
 I studied Computer Science at Columbia, and I've been fascinated by how
 companies like Salesforce use AI to manage customer relationships at scale.
 I built AgentCRM to understand that from the inside, by actually building it,
