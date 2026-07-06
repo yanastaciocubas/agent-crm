@@ -28,7 +28,8 @@ class RetrieverAgent:
                 "Vector store is empty. Run `python -m rag.embedder` first to build the index."
             )
 
-    def retrieve(self, ticket: dict) -> dict:
+    def retrieve(self, ticket: dict, min_score: float = RELEVANCE_THRESHOLD) -> dict:
+
         """
         Embed the ticket text, query Chroma, attach top-k results to ticket.
         """
@@ -41,7 +42,7 @@ class RetrieverAgent:
         results = self.store.query(query_embedding, n_results=TOP_K)
 
         # Filter out low-relevance results
-        filtered = [r for r in results if r["score"] >= RELEVANCE_THRESHOLD]
+        filtered = [r for r in results if r["score"] >= min_score]
 
         ticket["rag_context"] = filtered
         ticket["rag_sources"] = [r["id"] for r in filtered]
