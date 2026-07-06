@@ -1,5 +1,8 @@
 from typing import TypedDict
 
+from agent_crm.classifier import classify as classify_ticket
+from agent_crm.sentiment import analyze_sentiment
+
 
 class RetrievedDoc(TypedDict):
     content: str
@@ -17,3 +20,11 @@ class AgentState(TypedDict):
     retry_count: int
     response: str
     escalate: bool
+
+
+def classify_node(state: AgentState) -> dict:
+    return {"category": classify_ticket(state["original_query"])}
+
+
+def sentiment_node(state: AgentState) -> dict:
+    return {"sentiment": analyze_sentiment(state["original_query"])}
