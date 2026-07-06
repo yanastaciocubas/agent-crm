@@ -46,6 +46,7 @@ runs the v2 graph on a demo ticket.
 ## How it works
 
 Five agents, used by both v1 and v2:
+Five agents run in sequence on every ticket:
 
 1. **Classifier Agent**: categorizes the ticket (billing, bug, feature
    request, support, account) using keyword matching, and assigns a priority
